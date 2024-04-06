@@ -1,5 +1,7 @@
 package org.fwx.bean;
 
+import java.util.Arrays;
+
 /**
  * @ClassName User
  * @Description TODO
@@ -11,12 +13,22 @@ public class User {
     private String name;
     private int age;
 
+    private Dept dept;
+
+    private String[] hobby;
+
     public User() {
     }
 
     public User(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public User(String name, int age, Dept dept) {
+        this.name = name;
+        this.age = age;
+        this.dept = dept;
     }
 
     public String getName() {
@@ -35,8 +47,25 @@ public class User {
         this.age = age;
     }
 
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
+    }
+
+    public String[] getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String[] hobby) {
+        this.hobby = hobby;
+    }
+
     public void run(){
-        System.out.println("run ...");
+        System.out.println(this.name +" run ...");
+        dept.info();
     }
 
     @Override
@@ -44,6 +73,8 @@ public class User {
         return "User{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", dept=" + dept +
+                ", hobby=" + Arrays.toString(hobby) +
                 '}';
     }
 }

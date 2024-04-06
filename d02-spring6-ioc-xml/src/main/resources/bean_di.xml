@@ -3,7 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--set 注入属性-->
+    <!-- 普通属性注入 -->
+    <!-- set 注入属性-->
     <bean id="userset" class="org.fwx.bean.User">
         <property name="name" value="张三"></property>
         <property name="age" value="18"></property>
@@ -14,4 +15,48 @@
         <constructor-arg name="name" value="李四"></constructor-arg>
         <constructor-arg name="age" value="19"></constructor-arg>
     </bean>
+
+
+    <!-- 对象属性注入，外部 bean 注入 -->
+    <bean id="user" class="org.fwx.bean.User">
+        <property name="name" value="lili"></property>
+        <property name="dept" ref="dept"></property>
+    </bean>
+    <bean id="dept" class="org.fwx.bean.Dept">
+        <property name="deptName" value="财务部"></property>
+    </bean>
+
+    <!-- 对象属性注入，内部 bean 注入 -->
+    <bean id="user1" class="org.fwx.bean.User">
+        <property name="name" value="mary"></property>
+        <property name="dept">
+            <bean id="dept1" class="org.fwx.bean.Dept">
+                <property name="deptName" value="人事部"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- 对象属性注入，级联赋值 -->
+    <bean id="user2" class="org.fwx.bean.User">
+        <property name="name" value="lili"></property>
+        <property name="dept" ref="dept2"></property>
+        <property name="dept.deptName" value="测试部"></property>
+    </bean>
+    <bean id="dept2" class="org.fwx.bean.Dept">
+        <property name="deptName" value="财务部"></property>
+    </bean>
+
+    <!-- 数组数据注入 -->
+    <bean id="user3" class="org.fwx.bean.User">
+        <property name="name" value="张三"></property>
+        <property name="age" value="18"></property>
+        <property name="dept" ref="dept2"></property>
+        <property name="hobby">
+            <array>
+                <value>java</value>
+                <value>python</value>
+            </array>
+        </property>
+    </bean>
+
 </beans>
