@@ -11,6 +11,7 @@
     <modules>
         <module>d01_spring6_first</module>
         <module>d02-spring6-ioc-xml</module>
+        <module>d03-spring6-ioc-annotation</module>
     </modules>
 
     <properties>
@@ -44,6 +45,13 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j2-impl</artifactId>
             <version>2.19.0</version>
+        </dependency>
+
+        <!--@Resource注解属于JDK扩展包，所以不在JDK当中，需要额外引入以下依赖：【**如果是JDK8的话不需要额外引入依赖。高于JDK11或低于JDK8需要引入以下依赖。**】-->
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>2.1.1</version>
         </dependency>
     </dependencies>
 </project>
